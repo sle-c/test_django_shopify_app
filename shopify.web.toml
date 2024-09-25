@@ -1,0 +1,7 @@
+name = "django-app"
+roles = ["frontend", "backend"]
+webhooks_path = "/webhooks"
+
+[commands]
+dev = "python manage.py runserver --ipv6"
+predev = "python manage.py migrate && python manage.py createcachetable"

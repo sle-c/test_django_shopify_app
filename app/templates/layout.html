@@ -1,0 +1,21 @@
+<html>
+  <head>
+    {% if embedded %}
+    <meta name="shopify-api-key" content="{{ api_key }}" />
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
+    {% endif %}
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@shopify/polaris/build/esm/styles.css"
+    />
+  </head>
+
+  <body>
+    <ui-nav-menu>
+      <a href="/" rel="home">Home</a>
+      <a href="/additional">Additional page</a>
+    </ui-nav-menu>
+    {% block content %}{% endblock %}
+  </body>
+</html>

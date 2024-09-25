@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="Polaris-Page Polaris-Page--narrowWidth">
+  <div class="Polaris-Box" style="--pc-box-padding-block-start-xs:var(--p-space-400);--pc-box-padding-block-start-md:var(--p-space-600);--pc-box-padding-block-end-xs:var(--p-space-400);--pc-box-padding-block-end-md:var(--p-space-600);--pc-box-padding-inline-start-xs:var(--p-space-400);--pc-box-padding-inline-start-sm:var(--p-space-0);--pc-box-padding-inline-end-xs:var(--p-space-400);--pc-box-padding-inline-end-sm:var(--p-space-0);position:relative">
+    <div class="Polaris-LegacyCard">
+      <div class="Polaris-LegacyCard__Header Polaris-LegacyCard__FirstSectionPadding">
+        <h2 class="Polaris-Text--root Polaris-Text--headingMd">Congrats on building a Shopify app! 🎉</h2>
+      </div>
+      <div class="Polaris-LegacyCard__Section Polaris-LegacyCard__LastSectionPadding">
+        <p>Click the button below to fetch some data from your store.</p>
+
+        <div class="Polaris-InlineStack" style="--pc-inline-stack-align:end;--pc-inline-stack-wrap:wrap;--pc-inline-stack-gap-xs:var(--p-space-400);--pc-inline-stack-flex-direction-xs:row">
+          <button id="fetch-button" class="Polaris-Button Polaris-Button--pressable Polaris-Button--variantPrimary Polaris-Button--sizeMedium Polaris-Button--textAlignCenter" aria-label="Fetch data" type="button">
+            <span class="Polaris-Text--root Polaris-Text--bodySm Polaris-Text--medium">Fetch data</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="Polaris-LegacyCard">
+      <div class="Polaris-LegacyCard__Section Polaris-LegacyCard__LastSectionPadding">
+        <pre id="data">Data will appear here</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document
+    .getElementById('fetch-button')
+    .addEventListener('click', async () => {
+      const response = await fetch('/data');
+      const data = await response.json();
+      document.getElementById('data').innerText =
+        JSON.stringify(data);
+    });
+</script>
+{% endblock %}
